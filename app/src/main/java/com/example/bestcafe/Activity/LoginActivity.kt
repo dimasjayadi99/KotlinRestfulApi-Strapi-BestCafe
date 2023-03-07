@@ -68,11 +68,8 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }
-                    else{
-                        Toast.makeText(this@LoginActivity, response.errorBody().toString(), Toast.LENGTH_SHORT).show()
-                    }
                 }else{
-                    Toast.makeText(this@LoginActivity, response.errorBody().toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Gagal Login!, Silahkan masukan email dan password terdaftar", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -1,6 +1,7 @@
 package com.example.bestcafe.Api.Food
 
 import com.example.bestcafe.Response.ResponseFoods
+import com.example.bestcafe.Response.ResponseUser
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST

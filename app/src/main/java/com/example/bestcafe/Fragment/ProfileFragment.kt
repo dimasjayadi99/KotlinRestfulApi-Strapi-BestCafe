@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.example.bestcafe.Activity.EditProfileActivity
 import com.example.bestcafe.Activity.LoginActivity
 import com.example.bestcafe.Api.User.SharedPrefManager
 import com.example.bestcafe.R
@@ -19,13 +20,18 @@ class ProfileFragment : Fragment() {
 
     lateinit var tv_username : TextView
     lateinit var tv_email : TextView
-
+    lateinit var tv_edit : TextView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = LayoutInflater.from(parentFragment?.context).inflate(R.layout.fragment_profile, container, false)
 
         tv_username = view.findViewById(R.id.tv_username)
         tv_email = view.findViewById(R.id.tv_email)
+        tv_edit = view.findViewById(R.id.tv_edit)
+        tv_edit.setOnClickListener{
+            val intent = Intent(it.context,EditProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         val dataUser = SharedPrefManager.getInstance(view.context).user
 

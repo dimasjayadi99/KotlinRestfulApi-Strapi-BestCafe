@@ -20,6 +20,8 @@ class SharedPrefManager private constructor(private val mCtx : Context){
             sharedPreferences.getInt("id", -1),
             sharedPreferences.getString("email",null),
             sharedPreferences.getString("username",null),
+            sharedPreferences.getString("telp",null),
+            sharedPreferences.getString("alamat",null),
             sharedPreferences.getString("jwt",null)
         )
     }
@@ -32,6 +34,8 @@ class SharedPrefManager private constructor(private val mCtx : Context){
         editor.putInt("id", user?.user?.id!!)
         editor.putString("email", user?.user.email!!)
         editor.putString("username", user?.user.username!!)
+        editor.putString("telp", user.user.telp)
+        editor.putString("alamat", user.user.alamat)
         editor.putString("jwt", user?.jwt)
 
         editor.apply()

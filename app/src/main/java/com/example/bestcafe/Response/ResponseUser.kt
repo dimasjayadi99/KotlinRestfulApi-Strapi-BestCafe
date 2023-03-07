@@ -34,6 +34,12 @@ data class User(
 	@field:SerializedName("username")
 	val username: String? = null,
 
+	@field:SerializedName("telp")
+	val telp: String? = null,
+
+	@field:SerializedName("alamat")
+	val alamat: String? = null,
+
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
 )
