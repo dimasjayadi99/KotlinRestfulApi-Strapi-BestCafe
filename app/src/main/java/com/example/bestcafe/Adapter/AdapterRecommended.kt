@@ -1,7 +1,6 @@
 package com.example.bestcafe.Adapter
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +42,7 @@ class AdapterRecommended(val listFood : List<DataItem?>?) : RecyclerView.Adapter
         val price = listFood?.get(position)?.attributes?.price
         val localID = Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localID)
+        numberFormat.minimumFractionDigits = 0
         holder.price.text = numberFormat.format(price)
         Picasso.get().load(thumbLink).into(holder.img_thumb)
         holder.name.text = listFood?.get(position)?.attributes?.name
@@ -50,7 +50,7 @@ class AdapterRecommended(val listFood : List<DataItem?>?) : RecyclerView.Adapter
 
         val strCategory = ArrayList<String> ()
 
-        for(i in  listFood?.get(position)?.attributes?.categories?.data?.indices!!){
+        for(i in listFood?.get(position)?.attributes?.categories?.data?.indices!!){
             listFood?.get(position)?.attributes?.categories?.data!![i]?.attributes?.name?.let {
                 strCategory.add(it)
             }
@@ -59,6 +59,7 @@ class AdapterRecommended(val listFood : List<DataItem?>?) : RecyclerView.Adapter
         holder.itemView.setOnClickListener{
             // send data to detail page
             val intent = Intent(it.context, DetailActivity::class.java)
+            intent.putExtra("id",listFood?.get(position)?.id)
             intent.putExtra("thumb",thumbLink)
             intent.putExtra("name",holder.name.text)
             intent.putExtra("price",listFood?.get(position)?.attributes?.price)

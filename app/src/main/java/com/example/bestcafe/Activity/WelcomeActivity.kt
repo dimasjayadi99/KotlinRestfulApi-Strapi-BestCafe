@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bestcafe.Api.User.SharedPrefManager
 import com.example.bestcafe.R
 
 class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
@@ -26,5 +27,15 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
         val intent = Intent(p0.context,RegisterActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(SharedPrefManager.getInstance(this).isLoggedIn){
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+        }
     }
 }

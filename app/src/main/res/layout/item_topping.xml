@@ -8,19 +8,28 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="horizontal"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <CheckBox
-            android:enabled="false"
-            android:text="Coklat Susu"
+            android:id="@+id/ch_box"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:enabled="false"
+            android:textColor="@android:color/black"
+            android:text="Coklat Susu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_price_topping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
             android:text="Rp.3000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

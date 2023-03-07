@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.example.bestcafe.Api.User.SharedPrefManager
 import com.example.bestcafe.R
 
 class ProfileFragment : Fragment() {
@@ -14,7 +16,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = LayoutInflater.from(parentFragment?.context).inflate(R.layout.fragment_profile, container, false)
+
+        return view
     }
 
 }
