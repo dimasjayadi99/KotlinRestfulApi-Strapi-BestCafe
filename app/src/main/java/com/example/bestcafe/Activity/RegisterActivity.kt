@@ -38,23 +38,23 @@ class RegisterActivity : AppCompatActivity() {
 
             if (username.isEmpty()){
                 et_username.error = "Blank Field!"
-                et_username.isFocusable
+                et_username.requestFocus()
             }
             else if(email.isEmpty()){
                 et_email.error = "Blank Field!"
-                et_email.isFocusable
+                et_email.requestFocus()
             }
             else if(password.isEmpty()){
                 et_password.error = "Blank Field!"
-                et_password.isFocusable
+                et_password.requestFocus()
             }
             else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 et_email.error = "Email format not valid!"
-                et_email.isFocusable
+                et_email.requestFocus()
             }
             else if(password.length < 8){
                 et_password.error = "Min 8 char"
-                et_password.isFocusable
+                et_password.requestFocus()
             }
             else{
                 funRegiterAccount(username,email,password)

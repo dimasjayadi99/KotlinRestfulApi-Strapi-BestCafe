@@ -35,19 +35,19 @@ class LoginActivity : AppCompatActivity() {
 
             if (email.isEmpty()){
                 et_email.error = "Blank Field"
-                et_email.isFocusable
+                et_email.requestFocus()
             }
             else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 et_email.error = "Email not valid!"
-                et_email.isFocusable
+                et_email.requestFocus()
             }
             else if (password.isEmpty()){
                 et_password.error = "Blank Field"
-                et_password.isFocusable
+                et_password.requestFocus()
             }
             else if (password.length < 8){
                 et_password.error = "Min 8 Char"
-                et_password.isFocusable
+                et_password.requestFocus()
             }
             else{
                 loginAccount(email,password)
