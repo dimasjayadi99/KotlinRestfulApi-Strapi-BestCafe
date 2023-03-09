@@ -1,5 +1,6 @@
 package com.example.bestcafe.Activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -29,6 +30,9 @@ class LoginActivity : AppCompatActivity() {
         et_email = findViewById(R.id.et_email)
         et_password = findViewById(R.id.et_password)
         btn_login = findViewById(R.id.btn_login)
+        val progressDialog = ProgressDialog(this@LoginActivity)
+        progressDialog.setTitle("Tunggu Sebentar")
+
         btn_login.setOnClickListener {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
@@ -50,18 +54,20 @@ class LoginActivity : AppCompatActivity() {
                 et_password.requestFocus()
             }
             else{
-                loginAccount(email,password)
+                progressDialog.show()
+                loginAccount(progressDialog,email,password)
             }
         }
 
     }
 
-    private fun loginAccount(email: String, password: String) {
+    private fun loginAccount(progressDialog: ProgressDialog, email: String, password: String) {
         val loginReq = LoginRequest(email,password)
         ApiConfigUser.getService().loginAccount(loginReq).enqueue(object : Callback<ResponseUser>{
             override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
                 if (response.isSuccessful){
                     if (response.body() != null){
+                        progressDialog.dismiss()
                         SharedPrefManager.getInstance(applicationContext).saveUser(response.body())
                         val intent = Intent(applicationContext,MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -69,11 +75,13 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     }
                 }else{
+                    progressDialog.dismiss()
                     Toast.makeText(this@LoginActivity, "Gagal Login!, Silahkan masukan email dan password terdaftar", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
+                progressDialog.dismiss()
                 Toast.makeText(this@LoginActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
             }
 

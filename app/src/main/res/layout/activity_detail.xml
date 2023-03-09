@@ -28,7 +28,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="-50dp"
             android:background="@drawable/background_detail_page"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,17 +127,71 @@
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_category" />
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/rv_category" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Jumlah Pesanan"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:textStyle="bold"
+                    android:text="-" />
+
+                <EditText
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:layout_marginEnd="5dp"
+                    android:textStyle="bold"
+                    android:enabled="false"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="50dp"
+                    android:textStyle="bold"
+                    android:layout_height="40dp"
+                    android:text="+" />
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Topping"
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_category" />
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_topping"
@@ -161,11 +215,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_pesan"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Total Harga"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_topping" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:maxLines="1"
+                android:text="Rp.70.000"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_pesan"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/btn_shape"
@@ -173,8 +251,7 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

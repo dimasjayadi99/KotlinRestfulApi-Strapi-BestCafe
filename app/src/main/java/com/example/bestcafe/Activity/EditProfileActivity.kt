@@ -90,6 +90,7 @@ class EditProfileActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     if (response.body() != null){
                         Toast.makeText(this@EditProfileActivity, "Berhasil Update", Toast.LENGTH_SHORT).show()
+                        onBackPressed()
                     }
                     else{
                         Toast.makeText(this@EditProfileActivity, response.message(), Toast.LENGTH_SHORT).show()
